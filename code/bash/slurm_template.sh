@@ -26,6 +26,10 @@ source ~/<path2env>/bash/bin/activate
 python3 <path2file.py>
 deactivate
 
+#apptainer
+apptainer run -B <directory2bind/> <path2container.sif> python3 <path2file.py>  #python
+apptainer run -B <directory2bind/> --nv <path2container.sif> python3 <path2file.py>  #python + gpu
+
 
 ##print end of script
 finish=$(date +%s)  #end date in seconds

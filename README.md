@@ -34,6 +34,11 @@ These are two directories one can use to store, demonstrate, and test `python` m
 * [src_py](./code/src_py/) is hereby designated to the module creation.
 * [src_py_demo](./code/src_py_demo/) is designated for testing and demos.
 
+### [00_projectbuildingblocks.jl](./code/00_projectbuildingblocks.jl) and [00_projectbuildingblocks.py](./code/00_projectbuildingblocks.py)
+
+These are two files designed to host any building blocks that are used across multiple files in the project.
+Examples could be data-loading or standard plotting routines.
+
 ## [emails](./emails/)
 
 $\LaTeX$ template for an email (to easily discuss also over equations).

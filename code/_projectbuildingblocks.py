@@ -1,6 +1,14 @@
 
 """
     - building blocks that are used in multiple files of the project
+    - use by simply importing
+
+    ```python
+    import importlib
+    
+    import _projectbuildingblocks as pbb
+    importlib.reload(pbb)
+    ```    
 """
 
 #%%imports

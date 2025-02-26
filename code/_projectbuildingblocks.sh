@@ -1,6 +1,11 @@
 #!/bin/bash
 
-# - building blocks that are used in multiple files of the project
+#   - building blocks that are used in multiple files of the project
+#   - use by simply sourcing and calling the functions
+#
+#   ```bash
+#       source /fred/oz300/lukas/SNClassification/code/_projectbuildingblocks.sh
+#   ``` 
 
 #%%definitions
 function_template() {

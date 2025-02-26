@@ -1,9 +1,19 @@
 
 """
     - building blocks that are used in multiple files of the project
+    - use by simply including and importing
+
+    ```julia
+        include(joinpath(@__DIR__, "_projectbuildingblocks.jl"))
+        using .ProjectBuildingBlocks: ProjectBuildingBlocks as pbb
+    ```
 """
 
+module ProjectBuildingBlocks
+
 #%%imports
+
+#%%constants
 
 #%%definitions
 """
@@ -84,3 +94,5 @@ function function_template(
 
     return out 
 end
+
+end #module

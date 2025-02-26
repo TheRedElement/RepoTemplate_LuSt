@@ -7,6 +7,19 @@ Template for a repository structure.
 ## [code](./code/)
 
 Space for the code of your project.
+A naming convention that integrates with my standard workflow is as follows:
+* all [bash scripts](./code/bash/) are named starting with a zero-padded 2-digit integer i.e., `00_name.sh`
+    * the [bash scripts](./code/bash/) are the main control of the project workflow
+    * the number denotes the order of execution
+* any script executed from within one of the main [bash scripts](./code/bash/) are named starting with zero-padded 3-digit integers i.e., `000_name.sh`
+    * the 3-digit integer denotes the execution-order from within the main [bash scripts](./code/bash/)
+        * for `03_example.sh` that would mean
+            * the first script executed from within is named `031_routine.py`
+            * the second script executed from within is named `032_routine.jl`
+            * ...
+* scripts that are not used anymore but also can't be deleted yet, follow the same naming scheme, except they get assigned `9` as their first digit
+    * for main [bash scripts](./code/bash/) that means: `90_archived.sh`
+    * for subscripts that means: `900_archived.jl`, `901_archived.jl`
 
 ### [bash](./code/bash/)
 
@@ -52,7 +65,7 @@ It is advised that graphics generated in  [code](./code/) are directly stored in
 ## [install_requirements_python.py](./install_requirements_python.py)
 
 Script to install all requirements listed in a `requirements.txt` file.
-Will ignore any installs that rsult in errors.
+Will ignore any installs that result in errors.
 Idea is to prevent errors arising from windows/linux incompitbilities.
 
 # [.gitignore](./.gitignore)

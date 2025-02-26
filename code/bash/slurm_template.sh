@@ -23,6 +23,16 @@ start=$(date +%s)   #start date in seconds
 startdate=$(date -u -d "@$start" +%Y-%m-%dT%H:%M:%S)    #format nicely
 printf "BASH-INFO: Started at %s\n" $startdate
 
+##############################
+#custom environment variables#
+##############################
+
+#julia custom depot path
+##NOTE: https://docs.julialang.org/en/v1/base/constants/#Base.DEPOT_PATH
+##NOTE: https://docs.julialang.org/en/v1/manual/environment-variables/#JULIA_DEPOT_PATH
+export JULIA_DEPOT_PATH="/path/to/juliadepot:"
+# unset JULIA_DEPOT_PATH         #reset to default (if needed)
+
 #########
 #control#
 #########

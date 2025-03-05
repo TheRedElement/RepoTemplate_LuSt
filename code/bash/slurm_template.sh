@@ -14,6 +14,7 @@
 #SBATCH --gpus-per-node=1               #number of gpus to be used per node
 #SBATCH --cpus-per-gpu=4                #number of cpus of each gpu to be used
 #SBATCH --time=2-00:00:00               #time limit
+#SBATCH --tmp=150GB                     #temporary memory (if large files are acessed, loads of files are read and write)
 
 #################
 #start of script#
@@ -42,6 +43,14 @@ slurm_array_length=$((SLURM_ARRAY_TASK_MAX-SLURM_ARRAY_TASK_MIN+1))     #length 
 ######
 #main#
 ######
+
+#copy large files to temporary directory
+cp /path/to/file.txt $JOBFS
+
+#do stuff...
+
+cp $JOBFS/path/to/output.txt /path/to/target/directory
+
 
 #julia (needs absolute reference to julia executable)
 $HOME/julia-1.10.4/bin/julia --project=~/<path2venv> -t 1 -p 1 < path2file.jl >  #-t ... number of threads #-p ... number of processes

@@ -22,7 +22,7 @@
 #print current date
 start=$(date +%s)   #start date in seconds
 startdate=$(date -u -d "@$start" +%Y-%m-%dT%H:%M:%S)    #format nicely
-printf "BASH-INFO: Started at %s\n" $startdate
+printf "BASH.INFO: Started at %s\n" $startdate
 
 ##############################
 #custom environment variables#
@@ -73,7 +73,7 @@ finishdate=$(date -u -d "@$finish" +%Y-%m-%dT%H:%M:%S)  #format nicely
 #elapsed time
 days="$(($(($finish - $start )) / 86400))"  #elapsed days (convert seconds to days)
 duration="$(($finish - $start))"            #get elapsed time in seconds
-printf "BASH-INFO: Finished at %s\n" $finishdate
-printf "BASH-INFO: Ran from : %s\n" "$startdate to $finishdate"
-printf "BASH-INFO: Elapsed time: %s days %s\n" "$days" "$(date -u -d "@$duration" +%H:%M:%S)"
+printf "BASH.INFO: Finished at %s\n" $finishdate
+printf "BASH.INFO: Ran from : %s\n" "$startdate to $finishdate"
+printf "BASH.INFO: Elapsed time: %s days %s\n" "$days" "$(date -u -d "@$duration" +%H:%M:%S)"
 

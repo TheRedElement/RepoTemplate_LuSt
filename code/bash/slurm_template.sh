@@ -13,7 +13,11 @@
 #SBATCH --ntasks=1                      #number of tasks per node
 #SBATCH --gpus-per-node=1               #number of gpus to be used per node
 #SBATCH --cpus-per-gpu=4                #number of cpus of each gpu to be used
+#SBATCH --cpus-per-task=1               #number of cpus to be used per task
+#SBATCH --mem-per-cpu=32G               #memory each cpu requires (adjust via trial and error: https://supercomputing.swin.edu.au/monitor/)
+##SBATCH --mem=4G                        #total amount of memory per node (in case you are using slurm array)
 #SBATCH --time=2-00:00:00               #time limit
+##SBATCH --gres=gpu:2                    #request GPUs (amount of GPUs after colon)
 #SBATCH --tmp=150GB                     #temporary memory (if large files are acessed, loads of files are read and write)
 
 #################

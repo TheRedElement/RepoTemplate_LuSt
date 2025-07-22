@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --mail-type=NONE #ALL
-##SBATCH --mail-user=lukas.steinwender99@gmail.com
+##SBATCH --mail-user=youremail@domain.com
 
 #SBATCH --job-name=myjob     #job name
 

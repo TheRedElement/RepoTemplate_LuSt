@@ -107,6 +107,7 @@ $$
     ,
 \end{align}
 $$
+<!--  -->
 <a name=eq-distmod></a>
 
 ## Iteration Formatting

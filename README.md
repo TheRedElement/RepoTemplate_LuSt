@@ -38,11 +38,11 @@ A directory for bash-scripts.
 A slurm-script template is provided.
 
 
-### [code_snippets/](./code/code_snippets/)
+### [code_snippets/](./code/LuStCodeSnippets)
 
 Submodule containing useful code snippets.
 
-An important example is [install_requirements_python.py](./code/code_snippets/install_requirements_python.py).
+An important example is [install_requirements_python.py](./code/LuStCodeSnippets/install_requirements_python.py).
 This is a script to install all requirements listed in a `requirements.txt` file, which will ignore any installs that result in errors.
 Idea is to prevent errors arising from windows/linux incompitbilities.
 

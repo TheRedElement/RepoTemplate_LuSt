@@ -2,6 +2,17 @@
 
 Template for a repository structure.
 
+To clone this repo (including its submodules) you can use the following command:
+```bash
+git clone --recurse-submodules https://github.com/TheRedElement/RepoTemplate_LuSt.git
+```
+If you don't need the submodules just omit `--recurse-submodules`
+
+> [!IMPORTANT]  
+> If you find this repository useful, please add the following acknowledgement in your work:
+> I/We acknowledge the work that went into curating a github-repository template to start working immediately.
+> The original we used can be found on [https://github.com/TheRedElement/RepoTemplate_LuSt/tree/main](https://github.com/TheRedElement/RepoTemplate_LuSt/tree/main).
+
 # Parts
 
 ## [code](./code/)
@@ -32,8 +43,7 @@ A slurm-script template is provided.
 Submodule containing useful code snippets.
 
 An important example is [install_requirements_python.py](./code/code_snippets/install_requirements_python.py).
-This is a script to install all requirements listed in a `requirements.txt` file.
-Will ignore any installs that result in errors.
+This is a script to install all requirements listed in a `requirements.txt` file, which will ignore any installs that result in errors.
 Idea is to prevent errors arising from windows/linux incompitbilities.
 
 ### [data](./code/data/)
@@ -96,3 +106,34 @@ A template `.gitignore` file containing ignores for
 ## [.gitmodules](./.gitmodules)
 
 Pointer to git modules included in the repo.
+
+# Some Useful Things
+
+## Creating Environments in Python
+If you are working with [Python](https://www.python.org/), a standard way to make sure your project is reproducible is to create a virtual environment for the project.
+To do so navigate to project root directory and call the following:
+```bash
+python3 -m venv venv
+```
+This will create a virtual environement called `venv` in your directory.
+The [.gitignore](./.gitignore) file will ignore the environment for git.
+
+To activate your environment use the following from your project root directory:
+```bash
+source venv/bin/activate
+```
+
+Now you can also install packages using [pip](https://pypi.org/project/pip/):
+```bash
+pip3 install <packagename>
+```
+
+To provide yourself (and others) with an easy way of reproducing your environment simpy `freeze` the environment:
+```bash
+pip3 freeze > requirements.txt
+```
+This creates a new file [requirements.txt](./requirements.txt), which contains all your installed packages including versions.
+To install all packages from a [requirements.txt](./requirements.txt) file just call the following within your activated environemnt:
+```bash
+pip3 install -r requirements.txt
+```

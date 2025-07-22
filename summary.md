@@ -46,10 +46,11 @@ header-includes:
     * adding the label below the figure (to avoid formatting issues of the source code when viewed in VS-Code)
 * an example can be found in [this example](#fig-label)
 
+<a name="fig-label"></a>
 |||
 |:-|:-|
 |![](./report/gfx/placeholder.png)|![](./report/gfx/placeholder.png)|
-<a name="fig-label"></a>
+<!--  -->
 Your figure caption.
 
 ## Flowcharts
@@ -59,6 +60,7 @@ Your figure caption.
 * for flowchart-elements consider the [documentation](https://mermaid.js.org/syntax/flowchart.html)
 
 
+<a name=fig-mermaidexample></a>
 ```mermaid
 graph LR
 
@@ -88,7 +90,7 @@ graph LR
     J1 --> MC
     MC --> Out
 ```
-<a name=fig-mermaidexample></a>
+<!--  -->
 Your flowchart caption
 
 ## Math
@@ -105,7 +107,7 @@ $$
     ,
 \end{align}
 $$
-<a name=eq-distmod}></a>
+<a name=eq-distmod></a>
 
 ## Iteration Formatting
 * use $\LaTeX$ to color text consistently i.e.:

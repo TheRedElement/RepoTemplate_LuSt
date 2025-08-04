@@ -47,6 +47,7 @@ header-includes:
 * an example can be found in [this example](#fig-label)
 
 <a name="fig-label"></a>
+<!--  -->
 |||
 |:-|:-|
 |![](./report/gfx/placeholder.png)|![](./report/gfx/placeholder.png)|
@@ -61,6 +62,7 @@ Your figure caption.
 
 
 <a name=fig-mermaidexample></a>
+<!--  -->
 ```mermaid
 graph LR
 
@@ -99,6 +101,8 @@ Your flowchart caption
 * an example can be found in [here](#eq-distmod)
 
 
+<a name=eq-distmod></a>
+<!--  -->
 $$
 \begin{align}
     \Delta m 
@@ -107,8 +111,6 @@ $$
     ,
 \end{align}
 $$
-<!--  -->
-<a name=eq-distmod></a>
 
 ## Iteration Formatting
 * use $\LaTeX$ to color text consistently i.e.:

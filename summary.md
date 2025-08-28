@@ -117,8 +117,8 @@ $$
     * $\color{red}\text{TODO: your task }$
 
 ## Bibliography
-* to already compile your bibliography at the time of summarizing make sure you obtain the relevant references and store them in a [bib-refs.bib](./report/bib-refs/bib-refs.bib) file
-* for including references in your text I recommend just linking to [bib-refs.bib](./report/bib-refs/bib-refs.bib) and inserting the cite-key as the link-text like so: [Vaswani2017_TransformerAttention](./report/bib-refs/bib-refs.bib)
+* to already compile your bibliography at the time of summarizing make sure you obtain the relevant references and store them in a [bib-refs.bib](./report/bib-refs.bib) file
+* for including references in your text I recommend just linking to [bib-refs.bib](./report/bib-refs.bib) and inserting the cite-key as the link-text like so: [Vaswani2017_TransformerAttention](./report/bib-refs.bib)
 
 ---
 ---

@@ -8,6 +8,7 @@
 #SBATCH --output=./execlogs/%x_%a.out
 #SBATCH --error=./execlogs/%x_%a.err
 
+##SBATCH --workdir=<path/to/wd>         #working directory to use
 #SBATCH --partition=icg                 #partition to be used
 #SBATCH --nodes 1                       #number of nodes to be used
 #SBATCH --ntasks=1                      #number of tasks per node

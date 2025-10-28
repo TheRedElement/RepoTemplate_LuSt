@@ -4,7 +4,8 @@
 
 #SBATCH --job-name=myjob     #job name
 
-#SBATCH --array=0-2                     #slurm array to execute multiple jobs at once
+#SBATCH --array=0-2                     #slurm array to execute multiple jobs at once (range)
+##SBATCH --array=1,2,4,5                 #slurm array to execute multiple trainings at once (list)
 #SBATCH --output=./execlogs/%x_%a.out
 #SBATCH --error=./execlogs/%x_%a.err
 

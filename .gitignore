@@ -3,6 +3,7 @@
 #my files
 ~/
 .vscode
+# _paths.sh
 
 ##ignore
 .temp/

@@ -71,6 +71,41 @@ These are two directories one can use to store, demonstrate, and test `python` m
     * an exemplary template for unit tests can be found in [submodulename_test_template.py](./code/src_py_tests/submodulename_test_template.py)
     * we use [pytest](https://docs.pytest.org/en/stable/) for testing python code
 
+### [_paths.sh](./code/_paths.sh)
+
+A single file containing **absolute** paths relevant in the project.
+The idea is to not leak any local paths (from i.e., supercomputers) when uploading code to [GitHub](https://github.com).
+To achieve this, proceed as follows:
+* do **NOT** sync [_paths.sh](./code/_paths.sh) to GitHub (uncomment the respective line in [.gitignore](.gitignore))
+* adjust your script based on the language you are using (see below)
+
+#### Bash Scripts
+* source the file at the beginning of your script
+```bash
+source <path/to/_paths.sh>
+```
+* expand the variables defined in [_paths.sh](./code/_paths.sh) whenever you need an absolute path
+```bash
+abspath="${project_path}/<relative/path/to/object>"
+```
+
+#### Python
+* have a look at [main.py](./code/main.py) for an example
+* a utility function is included in [_projectbuildingblocks.py](./code/_projectbuildingblocks.py)
+    * this function will load all defined paths into a dictionary mapping variable names to paths
+```python
+PROJ_PATHS:dict = pbb.get_paths("<path/to/_paths.sh>")
+```
+
+#### Julia
+* have a look at [main.jl](./code/main.jl) for an example
+* a utility function is included in [_projectbuildingblocks.jl](./code/_projectbuildingblocks.jl)
+    * this function will load all defined paths into a dictionary mapping variable names to paths
+```julia
+const PROJ_PATHS::Dict{String,String} = pbb.get_paths("<path/to/_paths.sh>")
+```
+
+
 ### [_projectbuildingblocks.*](./code/_projectbuildingblocks.*)
 
 These are files designed to host any building blocks that are used across multiple files in the project.

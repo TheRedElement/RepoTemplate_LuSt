@@ -17,6 +17,45 @@ module ProjectBuildingBlocks
 
 #%%definitions
 """
+    - function to extract paths from a bash file containing paths relevant to the project
+        - usually `_path.sh`
+    - does so by
+        - reading the file
+        - extracting groups that match r"([^=\n]+)=([^=\n]+)"
+        - converting matches to `Dict`
+    
+    Parameters
+    ----------
+        - `paths_file`
+            - `str`
+            - path to `_paths.sh` file
+                - file containing project paths
+    
+    Raises
+    ------
+
+    Returns
+    -------
+        - `paths`
+            - `Dict{String,String}`
+            - dictionary mapping `path_name` (bash variable name) to `path` (absolute path)
+
+    Dependencies
+    ------------
+
+    Comments
+    --------
+        - usually called at the start of a julia script to ensure all the paths are loaded
+"""
+function get_paths(
+    paths_file::String
+    )::Dict{String,String}
+    matches = eachmatch(r"([^=\n]+)=([^=\n]+)", read(paths_file, String))
+    paths::Dict{String,String} = Dict(getfield.(collect(matches),:captures))
+    return paths
+end
+
+"""
     - struct description
 
     Fields

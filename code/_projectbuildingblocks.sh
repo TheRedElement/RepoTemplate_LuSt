@@ -66,7 +66,7 @@ function_template() {
 
     #default values for positional args
     local arg1="${args[0]:-none}"
-    local arg2="${args[0]:-none}"
+    local arg2="${args[1]:-none}"
 
     if [[ "${arg1}" == "--help" ]]; then
         echo "$help"

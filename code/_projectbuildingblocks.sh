@@ -14,6 +14,7 @@ function_template() {
     #Usage
     #-----
     #   ```bash
+    #   function_template [val1] [val2] [kwarg1=<kwval1>] [kwarg2=<kwval2>] [kwarg3=<kwval3>]
     #   ```
     #
     #Parameters
@@ -37,7 +38,7 @@ function_template() {
     #Output
     #------
     #   ```bash
-    #   called function_template val1 val1 kwarg1=kval1 kwarg2=kval2 kwarg3=kval3
+    #   called function_template val1 val2 kwarg1=kval1 kwarg2=kval2 kwarg3=kval3
     #   ```
     #Comments
     #--------

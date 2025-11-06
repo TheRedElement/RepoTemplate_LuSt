@@ -134,4 +134,20 @@ function function_template(
     return out 
 end
 
+"""
+    - function to generate a figure that is finetuned for publication (talk/paper/poster)
+"""
+function pub_fig_name(args::Any)
+
+    return
+end
+    
+"""
+    - function to generate a table that is finetuned for publication (talk/paper/poster)
+"""
+function pub_tab_name(args::Any)
+
+    return
+end
+
 end #module

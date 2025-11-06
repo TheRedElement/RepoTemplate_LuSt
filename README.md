@@ -110,6 +110,7 @@ const PROJ_PATHS::Dict{String,String} = pbb.get_paths("<path/to/_paths.sh>")
 
 These are files designed to host any building blocks that are used across multiple files in the project.
 Examples could be data-loading or standard plotting routines.
+I use the convention `pub_<float>_<context>()` for functions and methods that are desinge to generate content for publication (paper/talk/poster).
 
 ### [pyproject.toml](./code/pyproject.toml)
 

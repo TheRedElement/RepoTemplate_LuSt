@@ -99,7 +99,7 @@ class ClassTemplate:
     
     def __call__(self, *args, **kwds):
         pass
-    
+
 def function_template():
     """
         - function description
@@ -130,3 +130,19 @@ def function_template():
         --------
     """
     return
+
+
+def pub_fig_name(args):
+    """
+        - function to generate a figure that is finetuned for publication (talk/paper/poster)
+    """
+
+    return
+    
+def pub_tab_name(args):
+    """
+        - function to generate a table that is finetuned for publication (talk/paper/poster)
+    """
+
+    return
+    

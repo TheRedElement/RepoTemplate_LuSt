@@ -2,25 +2,25 @@
 #SBATCH --mail-type=NONE #ALL
 ##SBATCH --mail-user=youremail@domain.com
 
-#SBATCH --job-name=myjob     #job name
+#SBATCH --job-name=<name/of/job>        #job name
 
-#SBATCH --array=0-2                     #slurm array to execute multiple jobs at once (range)
+#SBATCH --array=0-0                     #slurm array to execute multiple jobs at once (range)
 ##SBATCH --array=1,2,4,5                 #slurm array to execute multiple trainings at once (list)
 #SBATCH --output=./execlogs/%x_%a.out
 #SBATCH --error=./execlogs/%x_%a.err
 
 ##SBATCH --workdir=<path/to/wd>         #working directory to use
-#SBATCH --partition=icg                 #partition to be used
-#SBATCH --nodes 1                       #number of nodes to be used
-#SBATCH --ntasks=1                      #number of tasks per node
-#SBATCH --gpus-per-node=1               #number of gpus to be used per node
-#SBATCH --cpus-per-gpu=4                #number of cpus of each gpu to be used
-#SBATCH --cpus-per-task=1               #number of cpus to be used per task
+##SBATCH --partition=<partition/name>    #partition to be used
+#SBATCH --nodes=1                       #number of nodes to be used
+#SBATCH --ntasks=1                      #number of tasks per node (equivalent to number of cpus if `--cpus-per-task=1`)
+#SBATCH --cpus-per-task=1               #number of cpus to be used per task (use for i.e., threading)
+##SBATCH --gpus-per-node=1               #number of gpus to be used per node
+##SBATCH --cpus-per-gpu=4                #number of cpus of each gpu to be used
 #SBATCH --mem-per-cpu=32G               #memory each cpu requires (adjust via trial and error: https://supercomputing.swin.edu.au/monitor/)
 ##SBATCH --mem=4G                        #total amount of memory per node (in case you are using slurm array)
-#SBATCH --time=2-00:00:00               #time limit
+#SBATCH --time=0-00:10:00               #time limit
 ##SBATCH --gres=gpu:2                    #request GPUs (amount of GPUs after colon)
-#SBATCH --tmp=150GB                     #temporary memory (if large files are acessed, loads of files are read and write)
+##SBATCH --tmp=150GB                     #temporary memory (if large files are acessed, loads of files are read and write)
 
 #################
 #start of script#
@@ -37,12 +37,14 @@ printf "BASH.INFO: Started at %s\n" $startdate
 #julia custom depot path
 ##NOTE: https://docs.julialang.org/en/v1/base/constants/#Base.DEPOT_PATH
 ##NOTE: https://docs.julialang.org/en/v1/manual/environment-variables/#JULIA_DEPOT_PATH
-export JULIA_DEPOT_PATH="/path/to/juliadepot:"
+# export JULIA_DEPOT_PATH="/path/to/juliadepot:"
 # unset JULIA_DEPOT_PATH         #reset to default (if needed)
 
 #########
 #control#
 #########
+#get currently relevant paths
+source _paths.sh
 
 slurm_array_length=$((SLURM_ARRAY_TASK_MAX-SLURM_ARRAY_TASK_MIN+1))     #length of slurm job array (set to 1 is not a slurm job)
 
@@ -50,25 +52,26 @@ slurm_array_length=$((SLURM_ARRAY_TASK_MAX-SLURM_ARRAY_TASK_MIN+1))     #length 
 #main#
 ######
 
-#copy large files to temporary directory
-cp /path/to/file.txt $JOBFS
+# #copy large files to temporary directory
+# cp /path/to/file.txt $JOBFS
 
 #do stuff...
 
-cp $JOBFS/path/to/output.txt /path/to/target/directory
+# cp $JOBFS/path/to/output.txt /path/to/target/directory
 
 
-#julia (needs absolute reference to julia executable)
-$HOME/julia-1.10.4/bin/julia --project=~/<path2venv> -t 1 -p 1 < path2file.jl >  #-t ... number of threads #-p ... number of processes
+# #julia (needs absolute reference to julia executable)
+# $HOME/julia-1.10.4/bin/julia --project=~/<path2venv> -t 1 -p 1 < path2file.jl >  #-t ... number of threads #-p ... number of processes
 
 #python
 source ~/<path2env>/bash/bin/activate
+# source ${project_dir}.venv/bin/activate
 python3 <path2file.py>
 deactivate
 
 #apptainer
-apptainer run -B <directory2bind/> <path2container.sif> python3 <path2file.py>  #python
-apptainer run -B <directory2bind/> --nv <path2container.sif> python3 <path2file.py>  #python + gpu
+# apptainer run -B <directory2bind/> <path2container.sif> python3 <path2file.py>  #python
+# apptainer run -B <directory2bind/> --nv <path2container.sif> python3 <path2file.py>  #python + gpu
 
 ###############
 #end of script#

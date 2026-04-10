@@ -4,6 +4,16 @@ author: "TheRedElement"
 header-includes:
 ---
 
+# Export to html
+* we recommend using [pandoc](https://pandoc.org/)
+* conversion can be done by calling the following (pandoc <= v2.x)
+
+```bash
+pandoc summary.md -o summary.html --standalone --mathjax --css https://pandoc.org/demo/pandoc.css --self-contained -H pandoc-header.html
+```
+
+* `-H`... file containing additional content to use in the html head
+
 # Templates
 <a name=sec-templates></a>
 
@@ -36,6 +46,12 @@ header-includes:
 * linking to some label can be done like so (see source):
 [link](#lab-label)
 
+## Floats
+
+> [!IMPORTANT]
+> all floats have to be preceded by an empty line, otherwise they won't render correctly when converting to html
+
+
 ## Figures
 <a name="sec-figures"></a>
 
@@ -46,12 +62,11 @@ header-includes:
     * adding the label below the figure (to avoid formatting issues of the source code when viewed in VS-Code)
 * an example can be found in [this example](#fig-label)
 
-<a name="fig-label"></a>
-<!--  -->
 |||
 |:-|:-|
 |![](./report/gfx/placeholder.png)|![](./report/gfx/placeholder.png)|
 <!--  -->
+<a name="fig-label"></a>
 Your figure caption.
 
 ## Flowcharts
@@ -61,8 +76,6 @@ Your figure caption.
 * for flowchart-elements consider the [documentation](https://mermaid.js.org/syntax/flowchart.html)
 
 
-<a name=fig-mermaidexample></a>
-<!--  -->
 ```mermaid
 graph LR
 
@@ -93,6 +106,7 @@ graph LR
     MC --> Out
 ```
 <!--  -->
+<a name=fig-mermaidexample></a>
 Your flowchart caption
 
 ## Math
@@ -101,8 +115,6 @@ Your flowchart caption
 * an example can be found in [here](#eq-distmod)
 
 
-<a name=eq-distmod></a>
-<!--  -->
 $$
 \begin{align}
     \Delta m 
@@ -111,6 +123,8 @@ $$
     ,
 \end{align}
 $$
+<!--  -->
+<a name=eq-distmod></a>
 
 ## Iteration Formatting
 * use $\LaTeX$ to color text consistently i.e.:

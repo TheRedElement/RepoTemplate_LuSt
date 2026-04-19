@@ -14,6 +14,20 @@ pandoc summary.md -o summary.html --standalone --mathjax --css https://pandoc.or
 
 * `-H`... file containing additional content to use in the html head
 
+# Floats
+
+> [!IMPORTANT]
+> all floats have to be preceded by an empty line, otherwise they won't render correctly when converting to html
+
+* example code:
+
+|C1|C2|C3|
+|:-|:-|:-|
+|aa|bb|cc|
+<!-- -->
+<a href="tab-label"></a>
+some caption
+
 # Templates
 <a name=sec-templates></a>
 
@@ -46,10 +60,6 @@ pandoc summary.md -o summary.html --standalone --mathjax --css https://pandoc.or
 * linking to some label can be done like so (see source):
 [link](#lab-label)
 
-## Floats
-
-> [!IMPORTANT]
-> all floats have to be preceded by an empty line, otherwise they won't render correctly when converting to html
 
 
 ## Figures

@@ -32,7 +32,7 @@
     --c_code_keyword: #569cd6ff;
     --c_poster_sectnode: #4d4d4dff;
     --c_poster_mainnode: #c10000ff;
-/* fontsizes */
+    /* fontsizes */
     --fs_h1: 1.5em;
     --fs_h2: 1.3em;
     --fs_h3: 1.1em;
@@ -43,36 +43,71 @@
     --fs_list2_text: 1em;
 }
 
-/* images */
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
+
+/* defines colors for light mode (better than 2 files) */
+body.tre-light {
+    /* colors */
+    --c_main: #c80000ff;
+    --c_bg: #000000ff;
+    --c_body_text: #ffffffff;
+    --c_tabrow_bg: #5f5f5fff;
+    --c_tabrow_hover: #a10000ff;
+    --c_tabborder: #ffffffff;
+    --c_footnote_text: #c0c0c0ff;
+    --c_footnote_box: #000000ff;
+    --c_footnote_boxshadow: #bebebeff;
+    --c_blockquote_border: #a10000ff;
+    --c_blockquote_bg: #aaaaaaff;
+    --c_blockquote_text: #000000ff;
+    --c_link_text: #c80000ff;
+    --c_link_visited: #a10000ff;
+    --c_link_hover: #ff0000ff;
+    --c_link_active: #ff0000ff;
+    --c_list1_text: #ffffffff;
+    --c_list2_text: #ffffffff;
+    --c_caption_bg: #000000ff;
+    --c_caption_text: #ffffffff;
+    --c_comment_ls: #ff6969ff;
+    --c_todo_ls: #ff9100ff;
+    --c_bibcolor_ls: #a80000ff;
+    --c_code_bg: #1e1e1eff;
+    --c_code_constant: #569cd6ff;
+    --c_code_comment: #6a9955ff;
+    --c_code_string: #d16969ff;
+    --c_code_numeric: #b5cea8ff;
+    --c_code_keyword: #569cd6ff;
+    --c_poster_sectnode: #4d4d4dff;
+    --c_poster_mainnode: #c10000ff;
 }
 
 /* tables */
 table {
-    border-collapse: collapse;
-    width: 100%;
+  border-collapse: collapse;
+  width: 100%;
 }
 
 th, td {
-    border: 1px solid #ddd;
-    padding: 6px;
+  border: 1px solid #ddd;
+  padding: 6px;
 }
 
-/* improve readability */
-body {
-    max-width: 900px;
-    margin: auto;
-    font-family: sans-serif;
-    line-height: 1.5;
-    background-color: #000000;
-    color: #ffffff;
+
+/* ############ */
+/* from tre.css */
+/* ############ */
+
+blockquote {
+    display: inline-block;
+    overflow: hidden;
+    font-size: var(--fs_blockquote_text);
+    text-align: left;
+    width: 95%;
+    color: var(--c_blockquote_text);
+    margin-left: 0.5rem;    
+    border-left: 0.5rem var(--c_blockquote_border) solid;
+    background-color: var(--c_blockquote_bg);
 }
 
-/* links */
 a:link {
     color: var(--c_link_text);
     background-color: transparent;
@@ -101,6 +136,36 @@ a:active {
     font-style: italic;
 }
 
+
+/* ################# */
+/* custom for pandoc */
+/* ################# */
+
+
+/* improve readability */
+body {
+  max-width: 900px;
+  margin: auto;
+  font-family: sans-serif;
+  line-height: 1.5;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* headings */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--c_main);
+}
+
+
+/* images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
 </style>
 
 <!-- mathjax -->
@@ -108,14 +173,15 @@ a:active {
 <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>
     MathJax = {
-        tex: {
-            inlineMath: [['$', '$'], ['\\(', '\\)']],
-            displayMath: [['$$', '$$'], ['\\[', '\\]']]
-        }
-    };
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+  };
 </script>
-<!-- Mermaid -->
+<!-- mermaid -->
 <script type="module">
-    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
-mermaid.initialize({ startOnLoad: true });
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  // 2. Initialize Mermaid
+  mermaid.initialize({ startOnLoad: true });
 </script>

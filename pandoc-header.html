@@ -1,47 +1,121 @@
 <style>
-/* Images */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
+:root {
+    /* colors */
+    --c_main: #c80000ff;
+    --c_bg: #000000ff;
+    --c_body_text: #ffffffff;
+    --c_tabrow_bg: #5f5f5fff;
+    --c_tabrow_hover: #a10000ff;
+    --c_tabborder: #ffffffff;
+    --c_footnote_text: #c0c0c0ff;
+    --c_footnote_box: #000000ff;
+    --c_footnote_boxshadow: #bebebeff;
+    --c_blockquote_border: #a10000ff;
+    --c_blockquote_bg: #aaaaaaff;
+    --c_blockquote_text: #000000ff;
+    --c_link_text: #c80000ff;
+    --c_link_visited: #a10000ff;
+    --c_link_hover: #ff0000ff;
+    --c_link_active: #ff0000ff;
+    --c_list1_text: #ffffffff;
+    --c_list2_text: #ffffffff;
+    --c_caption_bg: #000000ff;
+    --c_caption_text: #ffffffff;
+    --c_comment_ls: #ff6969ff;
+    --c_todo_ls: #ff9100ff;
+    --c_bibcolor_ls: #a80000ff;
+    --c_code_bg: #1e1e1eff;
+    --c_code_constant: #569cd6ff;
+    --c_code_comment: #6a9955ff;
+    --c_code_string: #d16969ff;
+    --c_code_numeric: #b5cea8ff;
+    --c_code_keyword: #569cd6ff;
+    --c_poster_sectnode: #4d4d4dff;
+    --c_poster_mainnode: #c10000ff;
+/* fontsizes */
+    --fs_h1: 1.5em;
+    --fs_h2: 1.3em;
+    --fs_h3: 1.1em;
+    --fs_h4: 1.0em;
+    --fs_footnote_text: 0.8em;
+    --fs_blockquote_text: 1.2em;
+    --fs_list1_text: 1em;
+    --fs_list2_text: 1em;
 }
 
-/* Tables */
+/* images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* tables */
 table {
-  border-collapse: collapse;
-  width: 100%;
+    border-collapse: collapse;
+    width: 100%;
 }
 
 th, td {
-  border: 1px solid #ddd;
-  padding: 6px;
+    border: 1px solid #ddd;
+    padding: 6px;
 }
 
-/* Improve readability */
+/* improve readability */
 body {
-  max-width: 900px;
-  margin: auto;
-  font-family: sans-serif;
-  line-height: 1.5;
-  background-color: #000000;
-  color: #ffffff;
+    max-width: 900px;
+    margin: auto;
+    font-family: sans-serif;
+    line-height: 1.5;
+    background-color: #000000;
+    color: #ffffff;
 }
+
+/* links */
+a:link {
+    color: var(--c_link_text);
+    background-color: transparent;
+    text-decoration: none;
+    font-style: italic;
+}
+
+a:visited {
+    color: var(--c_link_visited);
+    background-color: transparent;
+    text-decoration: none;
+    font-style: italic;
+}
+
+a:hover {
+    color: var(--c_link_hover);
+    background-color: transparent;
+    text-decoration: underline;
+    font-style: italic;
+}
+
+a:active {
+    color: var(--c_link_active);
+    background-color: transparent;
+    text-decoration: underline;
+    font-style: italic;
+}
+
 </style>
 
-<!-- MathJax -->
+<!-- mathjax -->
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>
-window.MathJax = {
-  tex: {
-    inlineMath: [['\\(','\\)'], ['$', '$']],
-    displayMath: [['$$','$$']]
-  }
-};
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        }
+    };
 </script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-
 <!-- Mermaid -->
 <script type="module">
-import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
 mermaid.initialize({ startOnLoad: true });
 </script>

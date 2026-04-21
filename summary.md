@@ -9,7 +9,7 @@ header-includes:
 * conversion can be done by calling the following (pandoc <= v2.x)
 
 ```bash
-pandoc summary.md -o summary.html --standalone --mathjax --css https://pandoc.org/demo/pandoc.css --self-contained -H pandoc-header.html
+pandoc summary.md -o summary.html --standalone --mathjax --css https://pandoc.org/demo/pandoc.css --self-contained -H pandoc-header.html --toc --toc-depth=2
 ```
 
 * `-H`... file containing additional content to use in the html head
@@ -146,6 +146,14 @@ $$
 
 ---
 ---
+# Notation
+
+|Command|Description|
+|:-|:-|
+|$\text{\color{orange}{TODO: <text>}}$|todo message|
+|$\text{\color{orange}{Q: <question>}}$|question|
+<!-- -->
+Notation used throughout the document.
 
 # Main Document
 

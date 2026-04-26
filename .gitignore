@@ -8,6 +8,7 @@ _paths.sh
 ##ignore
 .temp/
 temp*.*
+temp*
 report/gfx/animations/*
 code/src_demo/data/*
 code/src_py_demo/data/*

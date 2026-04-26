@@ -74,7 +74,7 @@ some caption
 
 |||
 |:-|:-|
-|![](./report/gfx/placeholder.png)|![](./report/gfx/placeholder.png)|
+|![](./gfx/placeholder.png)|![](./gfx/placeholder.png)|
 <!--  -->
 <a name="fig-label"></a>
 Your figure caption.

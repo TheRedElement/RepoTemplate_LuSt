@@ -30,7 +30,8 @@ jobs:
         with:
           # use latest python version compatible with project
           python-version-file: "pyproject.toml"
-      - name: Install the project
-        run: uv sync --locked --all-extras --dev
-      - name: Run tests
-        run: uv run pytest -s tests/
+      # NOTE: uncomment once you have an actual project
+      # - name: Install the project
+      #   run: uv sync --locked --all-extras --dev
+      # - name: Run tests
+      #   run: uv run pytest -s tests/

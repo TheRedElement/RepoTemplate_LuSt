@@ -8,7 +8,7 @@ import os
 import sys
 import warnings
 
-#deactivate annying but irrelevant warnings
+#deactivate annoying but irrelevant warnings
 warnings.filterwarnings("ignore", message="set_ticklabels()")
 
 #get absolute path to current file

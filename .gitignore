@@ -3,7 +3,9 @@
 #my files
 ~/
 .vscode
+Session.vim
 _paths.sh
+
 
 ##ignore
 .temp/

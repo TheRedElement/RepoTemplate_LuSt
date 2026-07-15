@@ -4,21 +4,16 @@
 ~/
 .vscode
 Session.vim
-_paths.sh
+.config.json
 
 
 ##ignore
-.temp/
-temp*.*
-temp*
-report/gfx/animations/*
-code/src_demo/data/*
-code/src_py_demo/data/*
+*temp*
 *.out
 *.err
 
 ##do NOT ignore
-!report/gfx/animations/2018emt.gif
+!report/gfx/
 
 ##############
 #CUSTOM LATEX#

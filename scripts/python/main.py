@@ -16,19 +16,18 @@ DIR_PATH:str = os.path.dirname(os.path.realpath(__file__)) + "/"
 sys.path.append(DIR_PATH)
 
 #load project packages
-import _projectbuildingblocks as pbb
-importlib.reload(pbb)
+from package import load_config
 
 #get project paths
-PROJ_PATHS:dict = pbb.get_paths(f"{DIR_PATH}./_paths.sh")
+CONFIG:dict = load_config(f"{DIR_PATH}../../config.json")
 
 #set up logging
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 local_logger = logging.getLogger(__name__)
 local_logger.setLevel(logging.INFO)
-pbb_logger = logging.getLogger("_projectbuildingblocks")
-pbb_logger.setLevel(logging.INFO)
+main_logger = logging.getLogger("main")
+main_logger.setLevel(logging.INFO)
 
 #%%constants
 
@@ -42,7 +41,7 @@ def main():
     global PROJ_PATHS
 
     print(DIR_PATH)
-    print(PROJ_PATHS)
+    print(CONFIG)
     return
 
 if __name__ =="__main__":

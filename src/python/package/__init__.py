@@ -1,14 +1,11 @@
+"""template for a python package
 
-"""building blocks used across the project
-
-    - building blocks that are used in multiple files of the project
-    - use by importing
 
     ```python
     import importlib
 
-    import _projectbuildingblocks as pbb
-    importlib.reload(pbb)
+    import package
+    importlib.reload(package)
     ```
 
     Exceptions
@@ -17,7 +14,7 @@
         - `ClassTemplate` -- template for class definitions
 
     Functions
-        - `get_paths` -- extracts paths relevant for the project
+        - `load_config` -- loads project configs
         - `function_template` -- template for function definitions
         - `pub_fig_name` -- template for function generating publication ready figure
         - `pub_tab_name` -- template for function generating publication ready table
@@ -26,44 +23,42 @@
 """
 
 #%%imports
-import re
-from typing import Dict
+import json
+from typing import Any, Dict
 
 #%%definitions
-def get_paths(
-    paths_file:str
-    ) -> Dict[str,str]:
-    """extracts paths relevant for the project
+def load_config(
+    path:str
+    ) -> Dict[str,Any]:
+    """returns local configurations of the project
 
-    - function to extract paths from a bash file containing paths relevant to the project
-        - usually `_path.sh`
-    - does so by
-        - reading the file
-        - extracting groups that match r"([^=\n]+)=([^=\n]+)"
-        - converting matches to `dict`
-    - usually called at the start of a python script to ensure all the paths are loaded
+    - extracts configs from a json (usually `config.json`)
+        - paths
+        - global constants
+        - ...
 
     Parameters
-        - `paths_file`
+        - `path`
             - `str`
-            - path to `_paths.sh` file
-                - file containing project paths
+            - path to configs file
 
     Raises
 
     Returns
-        - `paths`
-            - `Dict[str,str]`
-            - dictionary mapping `path_name` (bash variable name) to `path` (absolute path)
+        - `config`
+            - `Dict[str,Any]`
 
     Dependencies
-        - `re`
+        - `json`
         - `typing`
 
     """
-    with open(paths_file, "r") as f:
-        paths = dict(re.findall(r"([^=\n]+)=([^=\n]+)", f.read()))
-    return paths
+    assert path[-5:] == ".json", f"`path` has to point to a `.json` file but is {path}"
+
+    with open(path, "r") as f:
+        config = json.load(f)
+
+    return config
 
 class ClassTemplate:
     """class representing ...

@@ -1,79 +1,118 @@
 
 """
-    - building blocks that are used in multiple files of the project
-    - use by simply including and importing
 
-    ```julia
-        include(joinpath(@__DIR__, "_projectbuildingblocks.jl"))
-        using .ProjectBuildingBlocks: ProjectBuildingBlocks as pbb
-    ```
+template for a julia module
+
+
+- to use call the following
+```julia
+    include(joinpath(@__DIR__, "<relative/path/to/Package.jl>"))
+    using .Package: Package as pkg
+```
+
+# Exceptions
+
+# Types
+
+# Structs
+- `StructTemplate` -- template for struct definitions
+
+# Functions
+- `function_template` -- template for function definitions
+
 """
 
-module ProjectBuildingBlocks
+module Package
 
 #%%imports
+using JSON
 
 #%%constants
 
 #%%definitions
 """
-    - function to extract paths from a bash file containing paths relevant to the project
-        - usually `_path.sh`
-    - does so by
-        - reading the file
-        - extracting groups that match r"([^=\n]+)=([^=\n]+)"
-        - converting matches to `Dict`
-    
-    Parameters
-    ----------
-        - `paths_file`
-            - `str`
-            - path to `_paths.sh` file
-                - file containing project paths
-    
-    Raises
-    ------
+    load_config(paths::String)
 
-    Returns
-    -------
-        - `paths`
-            - `Dict{String,String}`
-            - dictionary mapping `path_name` (bash variable name) to `path` (absolute path)
+returns local configurations of the project
 
-    Dependencies
-    ------------
+- extracts configs from a json (usually `config.json`)
+    - paths
+    - global constants
+    - ...
 
-    Comments
-    --------
-        - usually called at the start of a julia script to ensure all the paths are loaded
+
+# Arguments
+- `path`
+    - `String`
+    - path to configs file
+
+# Returns
+- `config`
+    - `Dict{String,Any}`
+
+# See also
+
+# Examples
+
+    ```jldoctest
+    julia> config = get_config("<path/to/config.json>")
+    ERROR: LoadError: AssertionError: [...]
+    ```
+
+# Extended help
+
+## Dependencies
+- `JSON`
+
+## Raises
+    `AssertionError`
+        - if wrong file type is passed in `path`
 """
-function get_paths(
-    paths_file::String
-    )::Dict{String,String}
-    matches = eachmatch(r"([^=\n]+)=([^=\n]+)", read(paths_file, String))
-    paths::Dict{String,String} = Dict(getfield.(collect(matches),:captures))
-    return paths
+function get_config(
+    path::String
+    )::Dict{String,Any}
+    @assert path[end-4:end] == ".json" "`path` has to point to a `.json` file but is $path"
+
+    config = JSON.parsefile(path)
+    return config
 end
 
 """
-    - struct description
+    StructTemplate(x1::AbstractArray{Number,3}=Array{Number}(undef,0,0,0); x2<:Number=0.0)
 
-    Fields
-    ------
-        - `x1`
-            - `AbstractArray{Number,3}`, optional
-            - description
-            - the default is `Array{Number}(undef,0,0,0)`
-        - `x2`
-            - `Number`, optional
-            - description
-            - the default is `0.0`
-    Methods
-    -------
-        - 
+struct representing ...
 
-    Comments
-    --------
+<long description>
+
+# Fields
+- `x1`
+    - `AbstractArray{Number,3}`, optional
+    - <description>
+    - the default is `Array{Number}(undef,0,0,0)`
+- `x2`
+    - `Number`, optional
+    - <description>
+    - the default is `0.0`
+
+# See also
+<related objects>
+
+# Examples
+
+    ```jldoctest
+    julia> <julia code>
+    <output>
+	[...]
+    ```
+
+# Extended help
+<very long description>
+
+## Dependencies
+-
+
+## Raises
+-
 """
 struct StructTemplate{T <: Number}
     x1::AbstractArray{T,3}
@@ -87,67 +126,67 @@ struct StructTemplate{T <: Number}
 
         new{T}(x1, x2)
     end
-
 end
 
 """
-    - function description
+    function_template(parg1<:Real, parg2:Symbol=:x2; narg1::String, narg2::Int=0)
 
-    Parameters
-    ----------
-        - `parg1`
-            - `Real`
-            - description
-        - `parg2`
-            - `Symbol`, optional
-            - description
-            - the default is `:x2` 
-        - `narg1`
-            - `Symbol`
-            - description
-        - `verbose`
-            - `Int`, optional
-            - verbosity level
-            - the default is `0`
-    
-    Raises
-    ------
+returns ...
 
-    Returns
-    -------
-        - `out`
-            - `Any`
-            - description
+<long description>
 
-    Comments
-    --------
+# Arguments
+- `parg1`
+    - `Real`
+    - <description>
+- `parg2`
+    - `Symbol`, optional
+    - <description>
+    - the default is `:x2`
+- `narg1`
+    - `Symbol`
+    - <description>
+- `narg2`
+    - `Int`, optional
+    - <description>
+    - the default is `0`
+
+# Returns
+- `out`
+    - `Any`
+    - <description>
+
+# See also
+<related objects>
+
+# Examples
+
+    ```jldoctest
+    julia> <julia code>
+    <output>
+	[...]
+    ```
+
+# Extended help
+<very long description>
+
+## Dependencies
+-
+
+## Raises
+- `SomeException`
+	- <description>
 """
 function function_template(
     parg1::T,                   #positional argument
     parg2::Symbol=:x2;          #positional argument
     narg1::String,              #named argument
-    verbose::Int=0,             #named argument
+    narg2::Int=0,             #named argument
     )::Any where {T <: Real}
-    
+
     out = nothing
 
-    return out 
-end
-
-"""
-    - function to generate a figure that is finetuned for publication (talk/paper/poster)
-"""
-function pub_fig_name(args::Any)
-
-    return
-end
-    
-"""
-    - function to generate a table that is finetuned for publication (talk/paper/poster)
-"""
-function pub_tab_name(args::Any)
-
-    return
+    return out
 end
 
 end #module

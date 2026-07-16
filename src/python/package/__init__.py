@@ -1,25 +1,22 @@
 """template for a python package
 
+```python
+import importlib
 
-    ```python
-    import importlib
+import package
+importlib.reload(package)
+```
 
-    import package
-    importlib.reload(package)
-    ```
+Exceptions
 
-    Exceptions
+Classes
+    - `ClassTemplate` -- template for class definitions
 
-    Classes
-        - `ClassTemplate` -- template for class definitions
+Functions
+    - `load_config` -- loads project configs
+    - `function_template` -- template for function definitions
 
-    Functions
-        - `load_config` -- loads project configs
-        - `function_template` -- template for function definitions
-        - `pub_fig_name` -- template for function generating publication ready figure
-        - `pub_tab_name` -- template for function generating publication ready table
-
-    Other Objects
+Other Objects
 """
 
 #%%imports
@@ -43,6 +40,8 @@ def load_config(
             - path to configs file
 
     Raises
+        - `AssertionError`
+            - if wrong file type is passed in `path`
 
     Returns
         - `config`
@@ -136,22 +135,5 @@ def function_template():
 	Dependencies
 	    -
     """
-    return
-
-
-def pub_fig_name(*args):
-    """generates figure for ...
-
-    - function to generate a figure that is fine-tuned for publication (talk/paper/poster)
-    """
-
-    return
-
-def pub_tab_name(*args):
-    """generates table for ...
-
-    - function to generate a table that is fine-tuned for publication (talk/paper/poster)
-    """
-
     return
 

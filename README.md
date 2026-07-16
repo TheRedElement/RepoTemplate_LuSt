@@ -94,20 +94,25 @@ A slurm-script template is provided.
 -- src/
     |-- bash/
     |-- julia/
-    |   `ProjectName/
-    |       |-- Project.toml
-    |       |-- src/
-    |       `-- test/
+    |   |-- Julia.jl
+    |   |-- Module1.jl
+    |   |-- Module2.jl
+    |   :
     |
     |-- python/
-    |   `-- projectname/
-    |       |-- __init__.py
-    |       :
+    |   |-- __init__.py
+    |   |-- module1.py
+    |   |-- module2.py
+    |   :
     |
     `-- shared/
 ```
 <!-- -->
 example structure for [src](./src/)
+
+> [!NOTE]
+> the modules are called `python` and `julia` so it is general across projects.
+> you can then easily convert them to a stand-alone project by renaming the necessary files and directories and updating the `.toml` files.
 
 ## [submodules/](./submodules/)
 
@@ -181,7 +186,7 @@ DIR_PATH:str = os.path.dirname(os.path.realpath(__file__)) + "/"
 sys.path.append(DIR_PATH)
 
 #load project packages
-from package import load_config
+from project import load_config
 
 #get project paths
 CONFIG:dict = load_config(f"{DIR_PATH}../../config.json")
@@ -194,9 +199,9 @@ CONFIG:dict = load_config(f"{DIR_PATH}../../config.json")
 
 ```julia
 #load project packages
-include(joinpath(@__DIR__,"../../src/julia/Package.jl"))
-using .Package: Package as pkg
-const PROJ_PATHS::Dict{String,Any} = pkg.get_config(joinpath(@__DIR__,"../../config.json"))
+include(joinpath(@__DIR__,"../../src/julia/Project.jl"))
+using .Project: Project as project
+const PROJ_PATHS::Dict{String,Any} = project.get_config(joinpath(@__DIR__,"../../config.json"))
 ```
 
 ## [pandoc-header.html](./pandoc-header.html)

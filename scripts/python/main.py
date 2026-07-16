@@ -16,7 +16,7 @@ DIR_PATH:str = os.path.dirname(os.path.realpath(__file__)) + "/"
 sys.path.append(DIR_PATH)
 
 #load project packages
-from package import load_config
+from python import load_config
 
 #get project paths
 CONFIG:dict = load_config(f"{DIR_PATH}../../config.json")

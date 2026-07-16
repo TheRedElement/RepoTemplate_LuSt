@@ -1,11 +1,12 @@
 #!/bin/bash
 
-#   - building blocks that are used in multiple files of the project
+#   - template for a bash-module
+#
 #   - use by simply sourcing and calling the functions
 #
 #   ```bash
-#       source <path/to/_projectbuildingblocks.sh>
-#   ``` 
+#       source <path/to/project.sh>
+#   ```
 
 #%%definitions
 function_template() {

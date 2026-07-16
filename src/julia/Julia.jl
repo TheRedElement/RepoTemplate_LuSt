@@ -3,12 +3,17 @@
 
 template for a julia module
 
-
 - to use call the following
 ```julia
-    include(joinpath(@__DIR__, "<relative/path/to/Package.jl>"))
-    using .Package: Package as pkg
+    include(joinpath(@__DIR__, "<relative/path/to/Project.jl>"))
+    using .Project: Project as project
 ```
+- the module is called `Julia` to have it general enough so it works across projects
+    - to publish a standalone package
+        - rename the project
+        - rename the entry file
+        - rename the module
+        - change the `Project.toml` file accordingly
 
 # Exceptions
 
@@ -22,7 +27,7 @@ template for a julia module
 
 """
 
-module Package
+module Julia
 
 #%%imports
 using JSON

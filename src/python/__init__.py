@@ -6,6 +6,11 @@ import importlib
 import package
 importlib.reload(package)
 ```
+- the module is called `python` to have it general enough so it works across projects
+    - to publish a standalone package
+        - rename the project
+        - rename the module (directory)
+        - change the `pyproject.toml` file accordingly
 
 Exceptions
 

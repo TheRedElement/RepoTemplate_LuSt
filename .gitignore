@@ -8,7 +8,7 @@ config.json
 
 
 ##ignore
-*temp*
+temp*
 *.out
 *.err
 

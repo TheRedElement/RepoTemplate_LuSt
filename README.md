@@ -165,30 +165,39 @@ example content of [config.json](./config.json).
 ### Bash Scripts
 * source the file at the beginning of your script
 ```bash
-source <path/to/_paths.sh>
-```
-* expand the variables defined in [_paths.sh](./_paths.sh) whenever you need an absolute path
-```bash
-abspath="${project_path}/<relative/path/to/object>"
+#get configs
+SCRIPT_DIR=$(dirname -- "$(realpath -- "$0")")
+PROJECTPATH=$(jq -r '.projectpath' "${SCRIPT_DIR}/<relative/path/to/config.json>")
 ```
 
 ### Python
-* have a look at [main.py](./main.py) for an example
-* a utility function is included in [_projectbuildingblocks.py](./_projectbuildingblocks.py)
-    * this function will load all defined paths into a dictionary mapping variable names to paths
+* have a look at [main.py](./scripts/python/main.py) for an example
+* a utility function is included in [package](./src/python/package/__init__.py)
+    * this function will load the local configs 
+
 ```python
-PROJ_PATHS:dict = pbb.get_paths("<path/to/_paths.sh>")
+#get absolute path to current file
+DIR_PATH:str = os.path.dirname(os.path.realpath(__file__)) + "/"
+sys.path.append(DIR_PATH)
+
+#load project packages
+from package import load_config
+
+#get project paths
+CONFIG:dict = load_config(f"{DIR_PATH}../../config.json")
 ```
 
 ### Julia
-* have a look at [main.jl](./main.jl) for an example
-* a utility function is included in [_projectbuildingblocks.jl](./_projectbuildingblocks.jl)
-    * this function will load all defined paths into a dictionary mapping variable names to paths
+* have a look at [main.jl](./scripts/julia/main.jl) for an example
+* a utility function is included in [Package](./src/julia/Package.jl)
+    * this function will load the local configs 
+
 ```julia
-const PROJ_PATHS::Dict{String,String} = pbb.get_paths("<path/to/_paths.sh>")
+#load project packages
+include(joinpath(@__DIR__,"../../src/julia/Package.jl"))
+using .Package: Package as pkg
+const PROJ_PATHS::Dict{String,Any} = pkg.get_config(joinpath(@__DIR__,"../../config.json"))
 ```
-
-
 
 ## [pandoc-header.html](./pandoc-header.html)
 

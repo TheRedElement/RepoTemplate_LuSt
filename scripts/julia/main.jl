@@ -18,6 +18,6 @@ global_logger(Logging.ConsoleLogger(stdout, Logging.Info))
 #%%control
 
 #%%main
-const PROJ_PATHS::Dict{String,Any} = pkg.get_config("./config.json")
+const PROJ_PATHS::Dict{String,Any} = pkg.get_config(joinpath(@__DIR__,"../../config.json"))
 println(@__DIR__)
 println(PROJ_PATHS)

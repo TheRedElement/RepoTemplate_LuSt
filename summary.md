@@ -74,7 +74,7 @@ some caption
 
 |||
 |:-|:-|
-|![](./gfx/placeholder.png)|![](./gfx/placeholder.png)|
+|![](./outputs/gfx/placeholder.png)|![](./outputs/gfx/placeholder.png)|
 <!--  -->
 <a name="fig-label"></a>
 Your figure caption.
@@ -138,7 +138,7 @@ $$
 
 ## Iteration Formatting
 * use $\LaTeX$ to color text consistently i.e.:
-    * $\color{red}\text{TODO: your task }$
+    * $\color{orange}\text{TODO: your task }$
 
 ## Bibliography
 * to already compile your bibliography at the time of summarizing make sure you obtain the relevant references and store them in a [bib-refs.bib](./report/bib-refs.bib) file
@@ -158,5 +158,5 @@ Notation used throughout the document.
 # Main Document
 
 * all your actual content goes here (comment or delete [Templates](#sec-templates))
-* we recommend structuring the readme already like a preliminary paper as then it's just a matter of copy-paste for writing the actual document
+* we recommend structuring this file already like a preliminary paper as then it's just a matter of copy-paste for writing the actual document
 

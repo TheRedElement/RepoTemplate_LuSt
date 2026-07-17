@@ -15,7 +15,7 @@
         "<glob pattern>": [
             "<description>"
         ]
-    ],
+    },
     "notes": {
         "<glob pattern>": [
             "<notes i.e., used for...; pitfalls>"

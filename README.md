@@ -186,7 +186,7 @@ DIR_PATH:str = os.path.dirname(os.path.realpath(__file__)) + "/"
 sys.path.append(DIR_PATH)
 
 #load project packages
-from project import load_config
+from python import load_config
 
 #get project paths
 CONFIG:dict = load_config(f"{DIR_PATH}../../config.json")
@@ -199,9 +199,9 @@ CONFIG:dict = load_config(f"{DIR_PATH}../../config.json")
 
 ```julia
 #load project packages
-include(joinpath(@__DIR__,"../../src/julia/Project.jl"))
-using .Project: Project as project
-const PROJ_PATHS::Dict{String,Any} = project.get_config(joinpath(@__DIR__,"../../config.json"))
+include(joinpath(@__DIR__,"../../src/julia/Julia.jl"))
+using .Julia: Julia as julia
+const PROJ_PATHS::Dict{String,Any} = julia.get_config(joinpath(@__DIR__,"../../config.json"))
 ```
 
 ## [pandoc-header.html](./pandoc-header.html)

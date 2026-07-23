@@ -9,11 +9,14 @@ config.json
 
 ##ignore
 temp*
+*.log
 *.out
 *.err
+data/**
 
 ##do NOT ignore
-!report/gfx/
+!data/**/
+!data/**/_meta.json
 
 ##############
 #CUSTOM LATEX#

@@ -8,32 +8,39 @@ import os
 import sys
 import warnings
 
-#deactivate annoying but irrelevant warnings
-warnings.filterwarnings("ignore", message="set_ticklabels()")
+#local imports
+# from lust_codesnippets_py.monitoring import logging_convenience as lcmolc
+# from lust_codesnippets_py.styles import plotly_style as lcstps
 
-#get absolute path to current file
-DIR_PATH:str = os.path.dirname(os.path.realpath(__file__)) + "/"
-sys.path.append(DIR_PATH)
-
-#load project packages
+#project packages
 from python import load_config
 
-#get project paths
-CONFIG:dict = load_config(f"{DIR_PATH}../../config.json")
-
-#set up logging
+#logging
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
+# lcmolc.setup_logger(level=logging.WARNING)
 local_logger = logging.getLogger(__name__)
 local_logger.setLevel(logging.INFO)
 main_logger = logging.getLogger("main")
 main_logger.setLevel(logging.INFO)
 
+#warnings
+warnings.filterwarnings("ignore", message="set_ticklabels()")
+
+#style setup
+# palette, ls, markers, cmap, hatches = lcstps.tre("dark", "cycle")
+# hatches = hatches[0:-1:3]
+
+#other global setup
+
 #%%constants
+DIR_PATH:str = os.path.dirname(os.path.realpath(__file__)) + "/"    #get absolute path to current file
+CONFIG:dict = load_config(f"{DIR_PATH}../../config.json")
+PROJECTPATH:str = CONFIG["projectpath"]
+DATADIR:str = PROJECTPATH + "data/"
+GFXDIR:str = PROJECTPATH + "outputs/gfx/"
 
 #%%definitions
-
-#%%control
 
 #%%main
 def main():

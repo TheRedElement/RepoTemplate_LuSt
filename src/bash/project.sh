@@ -11,16 +11,16 @@
 #%%definitions
 function_template() {
     local help='
-        - function description
+        function short description
+
+        - function long description
 
         Usage
-        -----
         ```bash
         function_template [--help] [val1] [val2] [kwarg1=<kwval1>] [kwarg2=<kwval2>] [kwarg3=<kwval3>]
         ```
 
         Parameters
-        ----------
         - $1 (`<name>`) [optional]
             - <type>
             - description
@@ -32,18 +32,14 @@ function_template() {
             - description
 
         Example
-        -------
         ```bash
         function_template val1 val2 kwarg1=kval1 kwarg2=kval2 kwarg3=kval3
         ```
 
         Output
-        ------
         ```bash
         called function_template val1 val2 kwarg1=kval1 kwarg2=kval2 kwarg3=kval3
         ```
-        Comments
-        --------
     '
 
     ################
@@ -71,17 +67,18 @@ function_template() {
 
     if [[ "${arg1}" == "--help" ]]; then
         echo "$help"
-    else
-        ###############
-        #FUNCTION BODY#
-        ###############
-
-        echo $"called function_template" \
-            "${arg1} ${arg2}" \
-            "kwarg1=${kwargs[kwarg1]}" \
-            "kwarg2=${kwargs[kwarg2]}" \
-            "kwarg3=${kwargs[kwarg3]}"
+        return 0
     fi
+
+    ###############
+    #FUNCTION BODY#
+    ###############
+
+    echo $"called function_template" \
+        "${arg1} ${arg2}" \
+        "kwarg1=${kwargs[kwarg1]}" \
+        "kwarg2=${kwargs[kwarg2]}" \
+        "kwarg3=${kwargs[kwarg3]}"
 }
 
 #prevent direct execution

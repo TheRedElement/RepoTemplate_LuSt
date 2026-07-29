@@ -6,18 +6,28 @@ using Logging
 
 #load project packages
 include(joinpath(@__DIR__,"../../src/julia/Julia.jl"))
-using .Julia: Julia as julia
+using .Julia: Loaders as loaders
 
 #setup logging
 global_logger(Logging.ConsoleLogger(stdout, Logging.Info))
 
 #%%constants
+const CONFIG::Dict{String,Any} = loaders.get_config(
+    joinpath(@__DIR__, "../../config.json")
+)
 
 #%%definitions
 
-#%%control
-
 #%%main
-const PROJ_PATHS::Dict{String,Any} = julia.get_config(joinpath(@__DIR__,"../../config.json"))
-println(@__DIR__)
-println(PROJ_PATHS)
+"""
+    main()
+
+- defined for easier debugging
+"""
+function main()
+    println(@__DIR__)
+    println(CONFIG)
+
+end
+
+main()

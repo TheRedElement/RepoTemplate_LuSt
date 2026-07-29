@@ -1,4 +1,3 @@
-
 """
 
 template for a julia module
@@ -6,7 +5,7 @@ template for a julia module
 - to use call the following
 ```julia
     include(joinpath(@__DIR__, "<relative/path/to/Project.jl>"))
-    using .Project: Project as project
+    using .Julia: Julia as julia
 ```
 - the module is called `Julia` to have it general enough so it works across projects
     - to publish a standalone package
@@ -30,168 +29,136 @@ template for a julia module
 module Julia
 
 #%%imports
-using JSON
+
+#%%exports
+
+#metadata
+
+#submodules (make visible to parent module)
+begin
+    include("./Loaders.jl")
+
+    #load (make visible to parent module)
+    using .Loaders
+
+    #reexport (make accessible to user)
+    export Loaders
+end
+
 
 #%%constants
 
-#%%definitions
-"""
-    load_config(paths::String)
+begin #local definitions
+    """
+        StructTemplate(x1::AbstractArray{Number,3}=Array{Number}(undef,0,0,0); x2<:Number=0.0)
 
-returns local configurations of the project
+    struct representing ...
 
-- extracts configs from a json (usually `config.json`)
-    - paths
-    - global constants
-    - ...
+    <long description>
 
+    # Fields
+    - `x1`
+        - `AbstractArray{Number,3}`, optional
+        - <description>
+        - the default is `Array{Number}(undef,0,0,0)`
+    - `x2`
+        - `Number`, optional
+        - <description>
+        - the default is `0.0`
 
-# Arguments
-- `path`
-    - `String`
-    - path to configs file
+    # See also
+    <related objects>
 
-# Returns
-- `config`
-    - `Dict{String,Any}`
+    # Examples
 
-# See also
+        ```jldoctest
+        julia> <julia code>
+        <output>
+        [...]
+        ```
 
-# Examples
+    # Extended help
+    <very long description>
 
-    ```jldoctest
-    julia> config = get_config("<path/to/config.json>")
-    ERROR: LoadError: AssertionError: [...]
-    ```
+    ## Dependencies
+    -
 
-# Extended help
+    ## Raises
+    -
+    """
+    struct StructTemplate{T <: Number}
+        x1::AbstractArray{T,3}
+        x2::T
 
-## Dependencies
-- `JSON`
+        #inner constructor (to allow default values)
+        function StructTemplate(
+            x1::AbstractArray{T,3}=Array{Number}(undef,0,0,0);    #positional argument
+            x2::T=0.0,                                        #named argument
+            ) where {T <: Number}
 
-## Raises
-    `AssertionError`
-        - if wrong file type is passed in `path`
-"""
-function get_config(
-    path::String
-    )::Dict{String,Any}
-    @assert path[end-4:end] == ".json" "`path` has to point to a `.json` file but is $path"
+            new{T}(x1, x2)
+        end
+    end
 
-    config = JSON.parsefile(path)
-    return config
-end
+    """
+        function_template(parg1<:Real, parg2:Symbol=:x2; narg1::String, narg2::Int=0)
 
-"""
-    StructTemplate(x1::AbstractArray{Number,3}=Array{Number}(undef,0,0,0); x2<:Number=0.0)
+    returns ...
 
-struct representing ...
+    <long description>
 
-<long description>
+    # Arguments
+    - `parg1`
+        - `Real`
+        - <description>
+    - `parg2`
+        - `Symbol`, optional
+        - <description>
+        - the default is `:x2`
+    - `narg1`
+        - `Symbol`
+        - <description>
+    - `narg2`
+        - `Int`, optional
+        - <description>
+        - the default is `0`
 
-# Fields
-- `x1`
-    - `AbstractArray{Number,3}`, optional
-    - <description>
-    - the default is `Array{Number}(undef,0,0,0)`
-- `x2`
-    - `Number`, optional
-    - <description>
-    - the default is `0.0`
+    # Returns
+    - `out`
+        - `Any`
+        - <description>
 
-# See also
-<related objects>
+    # See also
+    <related objects>
 
-# Examples
+    # Examples
 
-    ```jldoctest
-    julia> <julia code>
-    <output>
-	[...]
-    ```
+        ```jldoctest
+        julia> <julia code>
+        <output>
+        [...]
+        ```
 
-# Extended help
-<very long description>
+    # Extended help
+    <very long description>
 
-## Dependencies
--
+    ## Dependencies
+    -
 
-## Raises
--
-"""
-struct StructTemplate{T <: Number}
-    x1::AbstractArray{T,3}
-    x2::T
+    ## Raises
+    - `SomeException`
+        - <description>
+    """
+    function function_template(
+        parg1::T,                   #positional argument
+        parg2::Symbol=:x2;          #positional argument
+        narg1::String,              #named argument
+        narg2::Int=0,             #named argument
+        )::Any where {T <: Real}
 
-    #inner constructor (to allow default values)
-    function StructTemplate(
-        x1::AbstractArray{T,3}=Array{Number}(undef,0,0,0);    #positional argument
-        x2::T=0.0,                                        #named argument
-        ) where {T <: Number}
+        out = nothing
 
-        new{T}(x1, x2)
+        return out
     end
 end
-
-"""
-    function_template(parg1<:Real, parg2:Symbol=:x2; narg1::String, narg2::Int=0)
-
-returns ...
-
-<long description>
-
-# Arguments
-- `parg1`
-    - `Real`
-    - <description>
-- `parg2`
-    - `Symbol`, optional
-    - <description>
-    - the default is `:x2`
-- `narg1`
-    - `Symbol`
-    - <description>
-- `narg2`
-    - `Int`, optional
-    - <description>
-    - the default is `0`
-
-# Returns
-- `out`
-    - `Any`
-    - <description>
-
-# See also
-<related objects>
-
-# Examples
-
-    ```jldoctest
-    julia> <julia code>
-    <output>
-	[...]
-    ```
-
-# Extended help
-<very long description>
-
-## Dependencies
--
-
-## Raises
-- `SomeException`
-	- <description>
-"""
-function function_template(
-    parg1::T,                   #positional argument
-    parg2::Symbol=:x2;          #positional argument
-    narg1::String,              #named argument
-    narg2::Int=0,             #named argument
-    )::Any where {T <: Real}
-
-    out = nothing
-
-    return out
-end
-
 end #module

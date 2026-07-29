@@ -169,10 +169,12 @@ example content of [config.json](./config.json).
 
 ### Bash Scripts
 * source the file at the beginning of your script
+* see [slurm_template.sh](./scripts/bash/slurm_template.sh) for an example
+
 ```bash
 #get configs
 SCRIPT_DIR=$(dirname -- "$(realpath -- "$0")")
-PROJECTPATH=$(jq -r '.projectpath' "${SCRIPT_DIR}/<relative/path/to/config.json>")
+PROJECTPATH=$(jq -r '.projectpath' "${SCRIPT_DIR}/../../config.json")
 ```
 
 ### Python
@@ -182,26 +184,26 @@ PROJECTPATH=$(jq -r '.projectpath' "${SCRIPT_DIR}/<relative/path/to/config.json>
 
 ```python
 #get absolute path to current file
-DIR_PATH:str = os.path.dirname(os.path.realpath(__file__)) + "/"
-sys.path.append(DIR_PATH)
+SCRIPT_DIR:str = os.path.dirname(os.path.realpath(__file__)) + "/"
 
 #load project packages
 from python import load_config
 
 #get project paths
-CONFIG:dict = load_config(f"{DIR_PATH}../../config.json")
+CONFIG:dict = load_config(f"{SCRIPT_DIR}../../config.json")
 ```
 
 ### Julia
 * have a look at [main.jl](./scripts/julia/main.jl) for an example
-* a utility function is included in [Package](./src/julia/Package.jl)
+* a utility function is included in [Julia.jl](./src/julia/Julia.jl)
+    * in the [Loaders](./src/julia/Loaders.jl) module
     * this function will load the local configs 
 
 ```julia
 #load project packages
 include(joinpath(@__DIR__,"../../src/julia/Julia.jl"))
-using .Julia: Julia as julia
-const PROJ_PATHS::Dict{String,Any} = julia.get_config(joinpath(@__DIR__,"../../config.json"))
+using .Julia: Loaders as loaders
+const CONFIG::Dict{String,Any} = loaders.get_config(joinpath(@__DIR__, "../../config.json"))
 ```
 
 ## [pandoc-header.html](./pandoc-header.html)
